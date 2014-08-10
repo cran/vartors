@@ -1,0 +1,179 @@
+# -*- Encoding:UTF-8 -*-
+# <vartors template>
+# Default template in French for Rmd
+
+#< header
+---
+title: "Import des données"
+author: "Nom de l'auteur"
+date: "30 juin 2014"
+output:
+  html_document:
+    number_sections: yes
+    toc: yes
+  pdf_document:
+    toc: yes
+---
+
+```{r, echo=FALSE}
+# Warning: encoding = UTF-8
+```
+
+```{r, echo = FALSE, message = FALSE}
+# Load ggplot2 package to plot
+library(ggplot2)
+
+# Create a label function to access easly to labels
+# without using label function from packages
+# like those from Hmisc
+label <- function(object) attr(x = object, which = "label")
+
+```
+
+# Import du tableau de données
+
+Tableau de données au format Excel. 
+
+```{r importcsv}
+library(openxlsx)
+rep_rawdata <- read.xlsx( "rep_path_to_database")
+```
+
+Changer les noms de colonnes avec ceux définis dans le cahier de variable
+
+```{r changenoms}
+colnames(rep_rawdata) <-  rep_columns_names
+```
+
+Créer une copie du tableau de variable pour le nettoyage
+
+```{r copie}
+rep_cleandata <- rep_rawdata
+```
+
+# Nettoyage variable par variable
+#> header
+
+#< numeric 
+#< factor
+#< ordered
+#< integer
+#< date
+#< not_used
+## rep_rname
+### Description
+- Nom complet : rep_varlabel
+- Nom dans R : rep_rname
+- Description : rep_description
+- Unitée : rep_unit
+- Type : rep_type
+- Commentaires : rep_comment
+
+### Exploration des données brutes
+```{r brute_rep_rname}
+head(rep_rawdata$rep_rname, 10)
+```
+
+### Transformation
+#> not_used
+#> numeric 
+#> factor
+#> integer
+#> ordered
+#> date
+
+#< not_used
+Variable non utilisée dans l'analyse. A supprimer
+```{r supprime_rep_rname}
+rep_cleandata$rep_rname <- NULL
+```
+#> not_used
+
+#< numeric
+```{r transfo_rep_rname}
+rep_cleandata$rep_rname <- as.numeric(rep_rawdata$rep_rname)
+```
+#> numeric
+
+#< integer
+```{r transfo_rep_rname}
+rep_cleandata$rep_rname <- as.integer(rep_rawdata$rep_rname)
+```
+#> integer
+
+#< factor
+```{r transfo_rep_rname}
+rep_cleandata$rep_rname <- factor(
+  x = rep_rawdata$rep_rname,
+  levels = rep_levels,
+  labels = rep_names
+)
+```
+#> factor
+#< ordered
+```{r transfo_rep_rname}
+rep_cleandata$rep_rname <- factor(
+  x = rep_rawdata$rep_rname,
+  levels = rep_levels,
+  labels = rep_names,
+  ordered = TRUE
+)
+```
+#> ordered
+
+#< date
+```{r transfo_rep_rname}
+rep_cleandata$rep_rname <- as.Date(
+  x = rep_rawdata$rep_rname, 
+  format = "rep_unit"
+)
+```
+#> date
+
+<--- Check import --->
+
+#< numeric 
+#< factor
+#< ordered
+#< integer
+#< date
+
+Ajouter un _label_ (étiquette).
+```{r label_rep_rname}
+attr(rep_cleandata$rep_rname, "label") <- "rep_varlabel"
+```
+
+### Vérifier
+```{r check_rep_rname}
+# Premières données
+head(rep_cleandata$rep_rname, 10)
+
+# Résumé
+summary(rep_cleandata$rep_rname)
+
+# Graphique
+qplot(rep_cleandata$rep_rname, xlab = label(rep_cleandata$rep_rname))
+```
+
+#> numeric 
+#> factor
+#> integer
+#> ordered
+#> date
+
+#< footer
+# Exploration globale
+
+Recherche de données manquantes graphiquement
+```{r }
+library(dfexplore)
+dfplot(rep_cleandata)
+```
+
+# Sauvegarder
+
+```{r}
+donnees <- rep_cleandata
+save(donnees, file = "donnees.RData")
+```
+#> footer

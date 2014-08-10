@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>A tutorial of vartors</title>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+<!-- MathJax scripts -->
+<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<!--
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{Tutorial of vartors}
+-->
+
+<h1>A tutorial of vartors</h1>
+
+<h2>Raw material and main problem : a simple database</h2>
+
+<p>To be useful, <em>vartors</em> need a simple database. Simple databases are defined as a single table database, with one variable by column, one observation by line and the name of each variable in the first line (header).</p>
+
+<p>As a example, we will use the <code>bad_database.csv</code> given in the <em>vartors</em> package.</p>
+
+<pre><code class="r"># Load the database
+raw_data &lt;- read.csv(file = paste0(path.package(&quot;vartors&quot;),&quot;/examples/bad_database.csv&quot;))
+</code></pre>
+
+<p>This database have 10 variables of differents types and 100 observations. It seem&#39;s to be OK but if we check the class of each variable, there is some troubles.</p>
+
+<pre><code class="r">str(raw_data)
+</code></pre>
+
+<pre><code>#&gt; &#39;data.frame&#39;:    100 obs. of  10 variables:
+#&gt;  $ subject    : int  1 2 3 4 5 6 7 8 9 10 ...
+#&gt;  $ initial    : Factor w/ 59 levels &quot;ge&quot;,&quot;gh&quot;,&quot;gj&quot;,..: 31 51 23 34 53 34 18 9 21 49 ...
+#&gt;  $ birth      : Factor w/ 97 levels &quot;2000-01-01&quot;,&quot;2000-01-12&quot;,..: 1 5 77 27 36 24 78 97 25 55 ...
+#&gt;  $ sex        : Factor w/ 2 levels &quot;female&quot;,&quot;male&quot;: 1 1 2 1 1 2 2 1 2 2 ...
+#&gt;  $ height     : Factor w/ 37 levels &quot;&quot;,&quot;1.43&quot;,&quot;1.49&quot;,..: 7 9 18 21 28 37 27 13 4 7 ...
+#&gt;  $ weight     : Factor w/ 80 levels &quot;*&quot;,&quot;101.9&quot;,&quot;43.1&quot;,..: 52 39 34 NA 13 12 45 28 35 47 ...
+#&gt;  $ siblings   : Factor w/ 10 levels &quot;?&quot;,&quot;0&quot;,&quot;1&quot;,&quot;2&quot;,..: 7 3 4 2 NA 5 3 5 4 NA ...
+#&gt;  $ study_level: Factor w/ 4 levels &quot;not provided&quot;,..: 4 2 2 3 2 3 NA 2 3 3 ...
+#&gt;  $ Q1         : int  NA 2 2 3 NA 1 2 1 1 NA ...
+#&gt;  $ Q2         : int  0 2 NA NA NA NA 1 NA NA NA ...
+</code></pre>
+
+<p>We observe these issues :</p>
+
+<ul>
+<li><code>birth</code> was reconized as a factor but in reality, it&#39;s a data. <code>read.csv</code> don&#39;t detect dates.</li>
+<li><code>height</code> and <code>weight</code> were reconized as factor too but are numerics. It&#39;s because there is multiple definition for missing data (<em>NA</em>, <em>?</em>, <em>empty cell</em> and some comments)</li>
+<li>We don&#39;t know what are the labels for <code>study_levels</code></li>
+<li>We have no idea about what are the variables <code>Q1</code> and <code>Q2</code></li>
+<li><code>initial</code> was reconized as a <em>factor</em> but in reality, must be a <em>character</em>. It&#39;s because <code>read.csv</code> have the argument <code>stringsAsFactors = TRUE</code> by default.</li>
+</ul>
+
+<p>If you want to import this dataframe properly in <em>R</em> you will have to transform manually each variable, for example by writing a script like this</p>
+
+<pre><code class="r">clean_data &lt;- raw_data
+clean_data$initial &lt;- as.character(raw_data$initial)
+clean_data$birth &lt;- as.Date(raw_data$birth, format = &quot;%Y-%m-%d&quot;)
+</code></pre>
+
+<p>And this for each variable. Here it&#39;s easy because there is only 10 variables but it become quickly boring, time consuming and error prone for 50 variables. Furthermost, we have no information about the <em>labels</em> for <em>study_levels</em>, <em>Q1</em> and <em>Q2</em>. Then we need some information about. </p>
+
+<h2>Create a description of the variable</h2>
+
+<h3>Create a skeleton with <code>descvars_skeleton</code></h3>
+
+<p>The idea is to be explict about each variable. To achieve this, we could create a variable description table. <em>vartors</em> have the function <code>descvars_skeleton</code> to help you to create a skeleton of this a variables description table.</p>
+
+<pre><code class="r">library(vartors)
+desc_skeleton &lt;- descvars_skeleton(raw_data)
+kable(desc_skeleton[,1:12])
+</code></pre>
+
+<table><thead>
+<tr>
+<th align="left">column</th>
+<th align="left">originalname</th>
+<th align="left">varlabel</th>
+<th align="left">description</th>
+<th align="left">comment</th>
+<th align="left">unit</th>
+<th align="left">type</th>
+<th align="left">rname</th>
+<th align="left">flevel1</th>
+<th align="left">flabel1</th>
+<th align="left">flevel2</th>
+<th align="left">flabel2</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">A</td>
+<td align="left">subject</td>
+<td align="left">subject</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">integer</td>
+<td align="left">subject</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr>
+<td align="left">B</td>
+<td align="left">initial</td>
+<td align="left">initial</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">initial</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr>
+<td align="left">C</td>
+<td align="left">birth</td>
+<td align="left">birth</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">birth</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr>
+<td align="left">D</td>
+<td align="left">sex</td>
+<td align="left">sex</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">factor</td>
+<td align="left">sex</td>
+<td align="left">female</td>
+<td align="left">female</td>
+<td align="left">male</td>
+<td align="left">male</td>
+</tr>
+<tr>
+<td align="left">E</td>
+<td align="left">height</td>
+<td align="left">height</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">height</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr>
+<td align="left">F</td>
+<td align="left">weight</td>
+<td align="left">weight</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">weight</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr>
+<td align="left">G</td>
+<td align="left">siblings</td>
+<td align="left">siblings</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">siblings</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr>
+<td align="left">H</td>
+<td align="left">study_level</td>
+<td align="left">study_level</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">factor</td>
+<td align="left">study_level</td>
+<td align="left">not provided</td>
+<td align="left">not provided</td>
+<td align="left">primary</td>
+<td align="left">primary</td>
+</tr>
+<tr>
+<td align="left">I</td>
+<td align="left">Q1</td>
+<td align="left">Q1</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">factor</td>
+<td align="left">Q1</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">J</td>
+<td align="left">Q2</td>
+<td align="left">Q2</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">factor</td>
+<td align="left">Q2</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">1</td>
+</tr>
+</tbody></table>
+
+<p>Now, you have to ask the person who give you the database to explain each variable and fullfill this description of variable table. Just edit this, by using for example <code>edit</code> </p>
+
+<pre><code class="r">desc_complete &lt;- edit(desc_skeleton)
+</code></pre>
+
+<p>or in a more handy way, by saving the data.frame in <code>.csv</code> use a spreadsheet 
+software like <a href="http://libreoffice.org/">LibreOffice</a>. This way, you should send it to the person who send you this database and ask him to fullfill it or do it with him.</p>
+
+<pre><code class="r">write.csv(desc_skeleton, file = &quot;variables_description.csv&quot;)
+</code></pre>
+
+<p>Fulfill this file is the most time consumming part in the <em>vartors</em> process but normaly if the database was well formated, it&#39;s easy to do it.</p>
+
+<h3>Import the variable description with <code>import_vardesc</code></h3>
+
+<p>Next step is to import this table with variables description to a format that <em>vartors</em> should handle.</p>
+
+<p>Import the table in <em>R</em> as a dataframe</p>
+
+<pre><code class="r"># Path to csv in the vartors package. 
+# It&#39;s a specific case. In real usage, use the path to your file instead
+path_to_vardesc &lt;- paste0(path.package(&quot;vartors&quot;),
+                          &quot;/examples/variables_description_bad_database.csv&quot;)
+# Import the csv
+complete_vardesc &lt;- read.csv(file = path_to_vardesc)
+</code></pre>
+
+<p>The result is show below in two parts </p>
+
+<p>Complete variable description, first 8 columns :</p>
+
+<table><thead>
+<tr>
+<th align="left">column</th>
+<th align="left">originalname</th>
+<th align="left">varlabel</th>
+<th align="left">description</th>
+<th align="left">comment</th>
+<th align="left">unit</th>
+<th align="left">type</th>
+<th align="left">rname</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">A</td>
+<td align="left">subject</td>
+<td align="left">Unique id</td>
+<td align="left">NA</td>
+<td align="left">Don&#39;t perform any analysis. Must be unique</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">id</td>
+</tr>
+<tr>
+<td align="left">B</td>
+<td align="left">initial</td>
+<td align="left">initial</td>
+<td align="left">First letters of the name and surname</td>
+<td align="left">Not useful for analysis</td>
+<td align="left">NA</td>
+<td align="left">not_used</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">C</td>
+<td align="left">birth</td>
+<td align="left">Birthdate</td>
+<td align="left">NA</td>
+<td align="left">Use it to calculate age (reference date = 2014-07-31)</td>
+<td align="left">%Y-%m-%d</td>
+<td align="left">date</td>
+<td align="left">birthdate</td>
+</tr>
+<tr>
+<td align="left">D</td>
+<td align="left">sex</td>
+<td align="left">Gender</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">factor</td>
+<td align="left">sex</td>
+</tr>
+<tr>
+<td align="left">E</td>
+<td align="left">height</td>
+<td align="left">Height</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">m</td>
+<td align="left">numeric</td>
+<td align="left">height</td>
+</tr>
+<tr>
+<td align="left">F</td>
+<td align="left">weight</td>
+<td align="left">Weight</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">kg</td>
+<td align="left">numeric</td>
+<td align="left">weight</td>
+</tr>
+<tr>
+<td align="left">G</td>
+<td align="left">siblings</td>
+<td align="left">Number of siblings</td>
+<td align="left">Original question : How many sisters and brothers do you have ?</td>
+<td align="left">count variable -&gt; try a Poisson distribution</td>
+<td align="left">NA</td>
+<td align="left">integer</td>
+<td align="left">nb_siblings</td>
+</tr>
+<tr>
+<td align="left">H</td>
+<td align="left">study_level</td>
+<td align="left">Maximal study level</td>
+<td align="left">Original question : What&#39;s your higher education level ?</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">ordered</td>
+<td align="left">study_level</td>
+</tr>
+<tr>
+<td align="left">I</td>
+<td align="left">Q1</td>
+<td align="left">Like chocolate</td>
+<td align="left">Original question : Do you like chocolate ?</td>
+<td align="left">Used a Likert scale.</td>
+<td align="left">NA</td>
+<td align="left">ordered</td>
+<td align="left">q1_chocolate</td>
+</tr>
+<tr>
+<td align="left">J</td>
+<td align="left">Q2</td>
+<td align="left">Like french cheese</td>
+<td align="left">Original question : Do you like french cheese ?</td>
+<td align="left">Used a Likert scale.</td>
+<td align="left">NA</td>
+<td align="left">ordered</td>
+<td align="left">q2_cheese</td>
+</tr>
+</tbody></table>
+
+<p>Complete variable description, first 2 columns and last columns :</p>
+
+<table><thead>
+<tr>
+<th align="left">column</th>
+<th align="left">originalname</th>
+<th align="left">flevel1</th>
+<th align="left">flabel1</th>
+<th align="left">flevel2</th>
+<th align="left">flabel2</th>
+<th align="left">flevel3</th>
+<th align="left">flabel3</th>
+<th align="right">flevel4</th>
+<th align="left">flabel4</th>
+<th align="right">flevel5</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">A</td>
+<td align="left">subject</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">B</td>
+<td align="left">initial</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">C</td>
+<td align="left">birth</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">D</td>
+<td align="left">sex</td>
+<td align="left">female</td>
+<td align="left">Women</td>
+<td align="left">male</td>
+<td align="left">Man</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">E</td>
+<td align="left">height</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">F</td>
+<td align="left">weight</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">G</td>
+<td align="left">siblings</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">H</td>
+<td align="left">study_level</td>
+<td align="left">primary</td>
+<td align="left">primary</td>
+<td align="left">secondary</td>
+<td align="left">secondary</td>
+<td align="left">superior</td>
+<td align="left">superior</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">I</td>
+<td align="left">Q1</td>
+<td align="left">0</td>
+<td align="left">Strongly disagree</td>
+<td align="left">1</td>
+<td align="left">Disagree</td>
+<td align="left">2</td>
+<td align="left">Neither agree nor disagree</td>
+<td align="right">3</td>
+<td align="left">Agree</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td align="left">J</td>
+<td align="left">Q2</td>
+<td align="left">0</td>
+<td align="left">Strongly disagree</td>
+<td align="left">1</td>
+<td align="left">Disagree</td>
+<td align="left">2</td>
+<td align="left">Neither agree nor disagree</td>
+<td align="right">3</td>
+<td align="left">Agree</td>
+<td align="right">4</td>
+</tr>
+</tbody></table>
+
+<p>This way each variable is explicit. Note that you should used the type <em>not_used</em> in order to discard variable.</p>
+
+<p>Then you have to transform this <code>data.frame</code> to a <code>DatabaseDef</code> object, which could be understood by vartors. To to this, use <code>import_vardef</code></p>
+
+<pre><code class="r">suppressWarnings(
+database_def_object &lt;- import_vardef(complete_vardesc)
+)
+</code></pre>
+
+<p>If you don&#39;t suppress the warnings, you will show some message that&#39;s say your <em>rnames</em> are not perfect but will work.</p>
+
+<p>You could show this object</p>
+
+<pre><code class="r">database_def_object
+</code></pre>
+
+<pre><code>#&gt; An object of class &quot;DatabaseDef&quot;
+#&gt; Slot &quot;variables_definitions&quot;:
+#&gt; [[1]]
+#&gt; varlabel = Unique id 
+#&gt; type = character 
+#&gt; rname = id 
+#&gt; 
+#&gt; [[2]]
+#&gt; varlabel = initial 
+#&gt; comment = First letters of the name and surname 
+#&gt; type = not_used 
+#&gt; rname = initial 
+#&gt; 
+#&gt; [[3]]
+#&gt; varlabel = Birthdate 
+#&gt; unit = %d/%m/%Y 
+#&gt; type = date 
+#&gt; rname = birthdate 
+#&gt; 
+#&gt; [[4]]
+#&gt; varlabel = Gender 
+#&gt; type = factor 
+#&gt; rname = sex 
+#&gt; levels = female, male 
+#&gt; names = Women, Man 
+#&gt; 
+#&gt; [[5]]
+#&gt; varlabel = Height 
+#&gt; type = numeric 
+#&gt; rname = height 
+#&gt; 
+#&gt; [[6]]
+#&gt; varlabel = Weight 
+#&gt; type = numeric 
+#&gt; rname = weight 
+#&gt; 
+#&gt; [[7]]
+#&gt; varlabel = Number of siblings 
+#&gt; comment = Original question : How many sisters and brothers do you have ? 
+#&gt; type = integer 
+#&gt; rname = nb_siblings 
+#&gt; 
+#&gt; [[8]]
+#&gt; varlabel = Maximal study level 
+#&gt; comment = Original question : What&#39;s your higher education level ? 
+#&gt; type = ordered 
+#&gt; rname = study_level 
+#&gt; levels = primary, secondary, superior 
+#&gt; names = primary, secondary, superior 
+#&gt; 
+#&gt; [[9]]
+#&gt; varlabel = Like chocolate 
+#&gt; comment = Original question : Do you like chocolate ? 
+#&gt; type = ordered 
+#&gt; rname = q1_chocolate 
+#&gt; levels = 0, 1, 2, 3, 4 
+#&gt; names = Strongly disagree, Disagree, Neither agree nor disagree, Agree, Strongly agree 
+#&gt; 
+#&gt; [[10]]
+#&gt; varlabel = Like french cheese 
+#&gt; comment = Original question : Do you like french cheese ? 
+#&gt; type = ordered 
+#&gt; rname = q2_cheese 
+#&gt; levels = 0, 1, 2, 3, 4 
+#&gt; names = Strongly disagree, Disagree, Neither agree nor disagree, Agree, Strongly agree
+</code></pre>
+
+<p>You see that <code>import_vardef</code> parsed the table of variable definition. For example if you don&#39;t give <em>rname</em> in your table of variable definition, it will find one by reading the <em>varlabel</em> column or <em>originalname</em> if there is no <em>varlabel</em>.</p>
+
+<h2>Create the script with <code>create_script</code></h2>
+
+<p>It&#39;s time to create a script with this. It&#39;s really easy. Just use the <code>create_script</code> method</p>
+
+<pre><code class="r">simple_script &lt;- create_script(var_desc = database_def_object)
+</code></pre>
+
+<p>That&#39;s that simple! You have a script you can explore</p>
+
+<pre><code class="r">simple_script
+</code></pre>
+
+<pre><code>#&gt; #- Start of the script in R -#
+#&gt; ######### Importation script ##########
+#&gt; # import data
+#&gt; raw_data &lt;- read.csv(&quot;rep_path_to_database&quot;)
+#&gt; 
+#&gt; # Change headers
+#&gt; names(raw_data) &lt;- c(&#39;id&#39;, &#39;initial&#39;, &#39;birthdate&#39;, &#39;sex&#39;, &#39;height&#39;, &#39;weight&#39;, &#39;nb_siblings&#39;, &#39;study_level&#39;, &#39;q1_chocolate&#39;, &#39;q2_cheese&#39;)
+#&gt; 
+#&gt; # Make a copy
+#&gt; clean_data &lt;- raw_data
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; ####### Clean the variable initial #####
+#&gt; # The variable initial is not used for analysis
+#&gt; clean_data$initial &lt;- NULL
+#&gt; 
+#&gt; 
+#&gt; ####### Clean the variable birthdate #####
+#&gt; 
+#&gt; # explore the raw data
+#&gt; head(raw_data$birthdate)
+#&gt; str(raw_data$birthdate)
+#&gt; 
+#&gt; # set this variable as a date
+#&gt; clean_data$birthdate &lt;- as.Date(raw_data$birthdate, format=&quot;%d/%m/%Y&quot;)
+#&gt; # set the label
+#&gt; attr(clean_data$birthdate, &quot;label&quot;) &lt;- &quot;Birthdate&quot;
+#&gt; 
+#&gt; head(clean_data$birthdate)
+#&gt; str(clean_data$birthdate)
+#&gt; summary(clean_data$birthdate)
+#&gt; 
+#&gt; # number of NA
+#&gt; 
+#&gt; sum(is.na(clean_data$birthdate))
+#&gt; 
+#&gt; 
+#&gt; ####### Clean the variable sex #####
+#&gt; 
+#&gt; # explore the raw data
+#&gt; head(raw_data$sex)
+#&gt; str(raw_data$sex)
+#&gt; 
+#&gt; # Set rep_varlable as a factor
+#&gt; clean_data$sex &lt;- factor(
+#&gt;   x = raw_data$sex,
+#&gt;   levels = c(&#39;female&#39;, &#39;male&#39;),
+#&gt;   labels = c(&#39;Women&#39;, &#39;Man&#39;)
+#&gt; )
+#&gt; # set the label
+#&gt; attr(clean_data$sex, &quot;label&quot;) &lt;- &quot;Gender&quot;
+#&gt; 
+#&gt; head(clean_data$sex)
+#&gt; str(clean_data$sex)
+#&gt; summary(clean_data$sex)
+#&gt; 
+#&gt; # number of NA
+#&gt; 
+#&gt; sum(is.na(clean_data$sex))
+#&gt; # Make a plot
+#&gt; plot(clean_data$sex)
+#&gt; 
+#&gt; 
+#&gt; ####### Clean the variable height #####
+#&gt; 
+#&gt; # explore the raw data
+#&gt; head(raw_data$height)
+#&gt; str(raw_data$height)
+#&gt; 
+#&gt; # Set rep_varlable as a numeric
+#&gt; clean_data$height &lt;- as.numeric(raw_data$height)
+#&gt; # set the label
+#&gt; attr(clean_data$height, &quot;label&quot;) &lt;- &quot;Height&quot;
+#&gt; 
+#&gt; head(clean_data$height)
+#&gt; str(clean_data$height)
+#&gt; summary(clean_data$height)
+#&gt; 
+#&gt; # number of NA
+#&gt; 
+#&gt; sum(is.na(clean_data$height))
+#&gt; hist(clean_data$height)
+#&gt; 
+#&gt; 
+#&gt; ####### Clean the variable weight #####
+#&gt; 
+#&gt; # explore the raw data
+#&gt; head(raw_data$weight)
+#&gt; str(raw_data$weight)
+#&gt; 
+#&gt; # Set rep_varlable as a numeric
+#&gt; clean_data$weight &lt;- as.numeric(raw_data$weight)
+#&gt; # set the label
+#&gt; attr(clean_data$weight, &quot;label&quot;) &lt;- &quot;Weight&quot;
+#&gt; 
+#&gt; head(clean_data$weight)
+#&gt; str(clean_data$weight)
+#&gt; summary(clean_data$weight)
+#&gt; 
+#&gt; # number of NA
+#&gt; 
+#&gt; sum(is.na(clean_data$weight))
+#&gt; hist(clean_data$weight)
+#&gt; 
+#&gt; 
+#&gt; ####### Clean the variable nb_siblings #####
+#&gt; 
+#&gt; # explore the raw data
+#&gt; head(raw_data$nb_siblings)
+#&gt; str(raw_data$nb_siblings)
+#&gt; 
+#&gt; # Set rep_varlable as an integer
+#&gt; clean_data$nb_siblings &lt;- as.integer(raw_data$nb_siblings)
+#&gt; # set the label
+#&gt; attr(clean_data$nb_siblings, &quot;label&quot;) &lt;- &quot;Number of siblings&quot;
+#&gt; 
+#&gt; head(clean_data$nb_siblings)
+#&gt; str(clean_data$nb_siblings)
+#&gt; summary(clean_data$nb_siblings)
+#&gt; 
+#&gt; # number of NA
+#&gt; 
+#&gt; sum(is.na(clean_data$nb_siblings))
+#&gt; hist(clean_data$nb_siblings)
+#&gt; 
+#&gt; 
+#&gt; clean_data$study_level &lt;- factor(
+#&gt;   x = raw_data$study_level,
+#&gt;   levels = c(&#39;primary&#39;, &#39;secondary&#39;, &#39;superior&#39;),
+#&gt;   labels = c(&#39;primary&#39;, &#39;secondary&#39;, &#39;superior&#39;),
+#&gt;   ordered = TRUE
+#&gt; )
+#&gt; 
+#&gt; 
+#&gt; clean_data$q1_chocolate &lt;- factor(
+#&gt;   x = raw_data$q1_chocolate,
+#&gt;   levels = c(&#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;),
+#&gt;   labels = c(&#39;Strongly disagree&#39;, &#39;Disagree&#39;, &#39;Neither agree nor disagree&#39;, &#39;Agree&#39;, &#39;Strongly agree&#39;),
+#&gt;   ordered = TRUE
+#&gt; )
+#&gt; 
+#&gt; 
+#&gt; clean_data$q2_cheese &lt;- factor(
+#&gt;   x = raw_data$q2_cheese,
+#&gt;   levels = c(&#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;),
+#&gt;   labels = c(&#39;Strongly disagree&#39;, &#39;Disagree&#39;, &#39;Neither agree nor disagree&#39;, &#39;Agree&#39;, &#39;Strongly agree&#39;),
+#&gt;   ordered = TRUE
+#&gt; )
+#&gt; ##### watch all ######
+#&gt; 
+#&gt; str(clean_data)
+#&gt; 
+#&gt; ####### Save the cleaned data ######
+#&gt; save(clean_data, file=&quot;clean_data.Rdata&quot;)
+#&gt; #- End of the script in R -#
+</code></pre>
+
+<p>and you can write it in the this script in a file</p>
+
+<pre><code class="r">write_file(object = simple_script, filepath = &quot;my_import_script1.R&quot;)
+</code></pre>
+
+<h2>The fast way</h2>
+
+<p>One time you have your table with variables definition loaded in a data.frame, it&#39;s possible to do all the process in one line.</p>
+
+<p>Remember, before we just imported it to a data.frame called <em>complete_vardesc</em>.</p>
+
+<pre><code class="r">write_file(create_script(var_desc = complete_vardesc), filepath = &quot;my_import_script1.R&quot;)
+</code></pre>
+
+<h2>What about templates?</h2>
+
+<h3>Choose a builtin with <code>import_template</code></h3>
+
+<p>One of the strength of vartors, is his <em>template</em> system. Just before we created a script in <em>R</em>. But maybe you want it in <em>.Rmd</em> and then produce a report using <code>knitr</code>?
+And let&#39;s say you are a French user, then we want one in french.</p>
+
+<p>To see what are the builtin template available, read the documentation of <code>import_template</code> function</p>
+
+<pre><code class="r">?import_template
+</code></pre>
+
+<p>In the <em>Details</em> section, one can show there is a template that should match to our needs <em>template_fr.Rmd</em>. To import it, use <code>import_template</code> function and put the name of the builtin template in the <em>builtin</em> argument</p>
+
+<pre><code class="r">rmd_template &lt;- import_template(builtin = &quot;template_fr.Rmd&quot;)
+</code></pre>
+
+<p>Then recreate a script with this template</p>
+
+<pre><code class="r">rmd_script &lt;- create_script(var_desc = database_def_object, template = rmd_template)
+</code></pre>
+
+<p>And you have your script in Rmd !</p>
+
+<pre><code class="r">rmd_script
+</code></pre>
+
+<pre><code>#&gt; #- Start of the script in Rmd -#
+#&gt; ---
+#&gt; title: &quot;Import des données&quot;
+#&gt; author: &quot;Nom de l&#39;auteur&quot;
+#&gt; date: &quot;30 juin 2014&quot;
+#&gt; output:
+#&gt;   html_document:
+#&gt;     number_sections: yes
+#&gt;     toc: yes
+#&gt;   pdf_document:
+#&gt;     toc: yes
+#&gt; ---
+#&gt; 
+#&gt; ```{r, echo=FALSE}
+#&gt; # Warning: encoding = UTF-8
+#&gt; ```
+#&gt; 
+#&gt; ```{r, echo = FALSE, message = FALSE}
+#&gt; # Load ggplot2 package to plot
+#&gt; library(ggplot2)
+#&gt; 
+#&gt; # Create a label function to access easly to labels
+#&gt; # without using label function from packages
+#&gt; # like those from Hmisc
+#&gt; label &lt;- function(object) attr(x = object, which = &quot;label&quot;)
+#&gt; 
+#&gt; ```
+#&gt; 
+#&gt; # Import du tableau de données
+#&gt; 
+#&gt; Tableau de données au format Excel. 
+#&gt; 
+#&gt; ```{r importcsv}
+#&gt; library(openxlsx)
+#&gt; raw_data &lt;- read.xlsx( &quot;rep_path_to_database&quot;)
+#&gt; ```
+#&gt; 
+#&gt; Changer les noms de colonnes avec ceux définis dans le cahier de variable
+#&gt; 
+#&gt; ```{r changenoms}
+#&gt; colnames(raw_data) &lt;-  c(&#39;id&#39;, &#39;initial&#39;, &#39;birthdate&#39;, &#39;sex&#39;, &#39;height&#39;, &#39;weight&#39;, &#39;nb_siblings&#39;, &#39;study_level&#39;, &#39;q1_chocolate&#39;, &#39;q2_cheese&#39;)
+#&gt; ```
+#&gt; 
+#&gt; Créer une copie du tableau de variable pour le nettoyage
+#&gt; 
+#&gt; ```{r copie}
+#&gt; clean_data &lt;- raw_data
+#&gt; ```
+#&gt; 
+#&gt; # Nettoyage variable par variable
+#&gt; 
+#&gt; 
+#&gt; ## initial
+#&gt; ### Description
+#&gt; - Nom complet : initial
+#&gt; - Nom dans R : initial
+#&gt; - Description : NA
+#&gt; - Unitée : NA
+#&gt; - Type : not_used
+#&gt; - Commentaires : First letters of the name and surname
+#&gt; 
+#&gt; ### Exploration des données brutes
+#&gt; ```{r brute_initial}
+#&gt; head(raw_data$initial, 10)
+#&gt; ```
+#&gt; 
+#&gt; ### Transformation
+#&gt; Variable non utilisée dans l&#39;analyse. A supprimer
+#&gt; ```{r supprime_initial}
+#&gt; clean_data$initial &lt;- NULL
+#&gt; ```
+#&gt; 
+#&gt; 
+#&gt; ## birthdate
+#&gt; ### Description
+#&gt; - Nom complet : Birthdate
+#&gt; - Nom dans R : birthdate
+#&gt; - Description : NA
+#&gt; - Unitée : %d/%m/%Y
+#&gt; - Type : date
+#&gt; - Commentaires : NA
+#&gt; 
+#&gt; ### Exploration des données brutes
+#&gt; ```{r brute_birthdate}
+#&gt; head(raw_data$birthdate, 10)
+#&gt; ```
+#&gt; 
+#&gt; ### Transformation
+#&gt; ```{r transfo_birthdate}
+#&gt; clean_data$birthdate &lt;- as.Date(
+#&gt;   x = raw_data$birthdate, 
+#&gt;   format = &quot;%d/%m/%Y&quot;
+#&gt; )
+#&gt; ```
+#&gt; 
+#&gt; Ajouter un _label_ (étiquette).
+#&gt; ```{r label_birthdate}
+#&gt; attr(clean_data$birthdate, &quot;label&quot;) &lt;- &quot;Birthdate&quot;
+#&gt; ```
+#&gt; 
+#&gt; ### Vérifier
+#&gt; ```{r check_birthdate}
+#&gt; # Premières données
+#&gt; head(clean_data$birthdate, 10)
+#&gt; 
+#&gt; # Résumé
+#&gt; summary(clean_data$birthdate)
+#&gt; 
+#&gt; # Graphique
+#&gt; qplot(clean_data$birthdate, xlab = label(clean_data$birthdate))
+#&gt; ```
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; ## sex
+#&gt; ### Description
+#&gt; - Nom complet : Gender
+#&gt; - Nom dans R : sex
+#&gt; - Description : NA
+#&gt; - Unitée : NA
+#&gt; - Type : factor
+#&gt; - Commentaires : NA
+#&gt; 
+#&gt; ### Exploration des données brutes
+#&gt; ```{r brute_sex}
+#&gt; head(raw_data$sex, 10)
+#&gt; ```
+#&gt; 
+#&gt; ### Transformation
+#&gt; ```{r transfo_sex}
+#&gt; clean_data$sex &lt;- factor(
+#&gt;   x = raw_data$sex,
+#&gt;   levels = c(&#39;female&#39;, &#39;male&#39;),
+#&gt;   labels = c(&#39;Women&#39;, &#39;Man&#39;)
+#&gt; )
+#&gt; ```
+#&gt; 
+#&gt; Ajouter un _label_ (étiquette).
+#&gt; ```{r label_sex}
+#&gt; attr(clean_data$sex, &quot;label&quot;) &lt;- &quot;Gender&quot;
+#&gt; ```
+#&gt; 
+#&gt; ### Vérifier
+#&gt; ```{r check_sex}
+#&gt; # Premières données
+#&gt; head(clean_data$sex, 10)
+#&gt; 
+#&gt; # Résumé
+#&gt; summary(clean_data$sex)
+#&gt; 
+#&gt; # Graphique
+#&gt; qplot(clean_data$sex, xlab = label(clean_data$sex))
+#&gt; ```
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; ## height
+#&gt; ### Description
+#&gt; - Nom complet : Height
+#&gt; - Nom dans R : height
+#&gt; - Description : NA
+#&gt; - Unitée : NA
+#&gt; - Type : numeric
+#&gt; - Commentaires : NA
+#&gt; 
+#&gt; ### Exploration des données brutes
+#&gt; ```{r brute_height}
+#&gt; head(raw_data$height, 10)
+#&gt; ```
+#&gt; 
+#&gt; ### Transformation
+#&gt; ```{r transfo_height}
+#&gt; clean_data$height &lt;- as.numeric(raw_data$height)
+#&gt; ```
+#&gt; 
+#&gt; Ajouter un _label_ (étiquette).
+#&gt; ```{r label_height}
+#&gt; attr(clean_data$height, &quot;label&quot;) &lt;- &quot;Height&quot;
+#&gt; ```
+#&gt; 
+#&gt; ### Vérifier
+#&gt; ```{r check_height}
+#&gt; # Premières données
+#&gt; head(clean_data$height, 10)
+#&gt; 
+#&gt; # Résumé
+#&gt; summary(clean_data$height)
+#&gt; 
+#&gt; # Graphique
+#&gt; qplot(clean_data$height, xlab = label(clean_data$height))
+#&gt; ```
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; ## weight
+#&gt; ### Description
+#&gt; - Nom complet : Weight
+#&gt; - Nom dans R : weight
+#&gt; - Description : NA
+#&gt; - Unitée : NA
+#&gt; - Type : numeric
+#&gt; - Commentaires : NA
+#&gt; 
+#&gt; ### Exploration des données brutes
+#&gt; ```{r brute_weight}
+#&gt; head(raw_data$weight, 10)
+#&gt; ```
+#&gt; 
+#&gt; ### Transformation
+#&gt; ```{r transfo_weight}
+#&gt; clean_data$weight &lt;- as.numeric(raw_data$weight)
+#&gt; ```
+#&gt; 
+#&gt; Ajouter un _label_ (étiquette).
+#&gt; ```{r label_weight}
+#&gt; attr(clean_data$weight, &quot;label&quot;) &lt;- &quot;Weight&quot;
+#&gt; ```
+#&gt; 
+#&gt; ### Vérifier
+#&gt; ```{r check_weight}
+#&gt; # Premières données
+#&gt; head(clean_data$weight, 10)
+#&gt; 
+#&gt; # Résumé
+#&gt; summary(clean_data$weight)
+#&gt; 
+#&gt; # Graphique
+#&gt; qplot(clean_data$weight, xlab = label(clean_data$weight))
+#&gt; ```
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; ## nb_siblings
+#&gt; ### Description
+#&gt; - Nom complet : Number of siblings
+#&gt; - Nom dans R : nb_siblings
+#&gt; - Description : NA
+#&gt; - Unitée : NA
+#&gt; - Type : integer
+#&gt; - Commentaires : Original question : How many sisters and brothers do you have ?
+#&gt; 
+#&gt; ### Exploration des données brutes
+#&gt; ```{r brute_nb_siblings}
+#&gt; head(raw_data$nb_siblings, 10)
+#&gt; ```
+#&gt; 
+#&gt; ### Transformation
+#&gt; ```{r transfo_nb_siblings}
+#&gt; clean_data$nb_siblings &lt;- as.integer(raw_data$nb_siblings)
+#&gt; ```
+#&gt; 
+#&gt; Ajouter un _label_ (étiquette).
+#&gt; ```{r label_nb_siblings}
+#&gt; attr(clean_data$nb_siblings, &quot;label&quot;) &lt;- &quot;Number of siblings&quot;
+#&gt; ```
+#&gt; 
+#&gt; ### Vérifier
+#&gt; ```{r check_nb_siblings}
+#&gt; # Premières données
+#&gt; head(clean_data$nb_siblings, 10)
+#&gt; 
+#&gt; # Résumé
+#&gt; summary(clean_data$nb_siblings)
+#&gt; 
+#&gt; # Graphique
+#&gt; qplot(clean_data$nb_siblings, xlab = label(clean_data$nb_siblings))
+#&gt; ```
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; ## study_level
+#&gt; ### Description
+#&gt; - Nom complet : Maximal study level
+#&gt; - Nom dans R : study_level
+#&gt; - Description : NA
+#&gt; - Unitée : NA
+#&gt; - Type : ordered
+#&gt; - Commentaires : Original question : What&#39;s your higher education level ?
+#&gt; 
+#&gt; ### Exploration des données brutes
+#&gt; ```{r brute_study_level}
+#&gt; head(raw_data$study_level, 10)
+#&gt; ```
+#&gt; 
+#&gt; ### Transformation
+#&gt; ```{r transfo_study_level}
+#&gt; clean_data$study_level &lt;- factor(
+#&gt;   x = raw_data$study_level,
+#&gt;   levels = c(&#39;primary&#39;, &#39;secondary&#39;, &#39;superior&#39;),
+#&gt;   labels = c(&#39;primary&#39;, &#39;secondary&#39;, &#39;superior&#39;),
+#&gt;   ordered = TRUE
+#&gt; )
+#&gt; ```
+#&gt; 
+#&gt; Ajouter un _label_ (étiquette).
+#&gt; ```{r label_study_level}
+#&gt; attr(clean_data$study_level, &quot;label&quot;) &lt;- &quot;Maximal study level&quot;
+#&gt; ```
+#&gt; 
+#&gt; ### Vérifier
+#&gt; ```{r check_study_level}
+#&gt; # Premières données
+#&gt; head(clean_data$study_level, 10)
+#&gt; 
+#&gt; # Résumé
+#&gt; summary(clean_data$study_level)
+#&gt; 
+#&gt; # Graphique
+#&gt; qplot(clean_data$study_level, xlab = label(clean_data$study_level))
+#&gt; ```
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; ## q1_chocolate
+#&gt; ### Description
+#&gt; - Nom complet : Like chocolate
+#&gt; - Nom dans R : q1_chocolate
+#&gt; - Description : NA
+#&gt; - Unitée : NA
+#&gt; - Type : ordered
+#&gt; - Commentaires : Original question : Do you like chocolate ?
+#&gt; 
+#&gt; ### Exploration des données brutes
+#&gt; ```{r brute_q1_chocolate}
+#&gt; head(raw_data$q1_chocolate, 10)
+#&gt; ```
+#&gt; 
+#&gt; ### Transformation
+#&gt; ```{r transfo_q1_chocolate}
+#&gt; clean_data$q1_chocolate &lt;- factor(
+#&gt;   x = raw_data$q1_chocolate,
+#&gt;   levels = c(&#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;),
+#&gt;   labels = c(&#39;Strongly disagree&#39;, &#39;Disagree&#39;, &#39;Neither agree nor disagree&#39;, &#39;Agree&#39;, &#39;Strongly agree&#39;),
+#&gt;   ordered = TRUE
+#&gt; )
+#&gt; ```
+#&gt; 
+#&gt; Ajouter un _label_ (étiquette).
+#&gt; ```{r label_q1_chocolate}
+#&gt; attr(clean_data$q1_chocolate, &quot;label&quot;) &lt;- &quot;Like chocolate&quot;
+#&gt; ```
+#&gt; 
+#&gt; ### Vérifier
+#&gt; ```{r check_q1_chocolate}
+#&gt; # Premières données
+#&gt; head(clean_data$q1_chocolate, 10)
+#&gt; 
+#&gt; # Résumé
+#&gt; summary(clean_data$q1_chocolate)
+#&gt; 
+#&gt; # Graphique
+#&gt; qplot(clean_data$q1_chocolate, xlab = label(clean_data$q1_chocolate))
+#&gt; ```
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; ## q2_cheese
+#&gt; ### Description
+#&gt; - Nom complet : Like french cheese
+#&gt; - Nom dans R : q2_cheese
+#&gt; - Description : NA
+#&gt; - Unitée : NA
+#&gt; - Type : ordered
+#&gt; - Commentaires : Original question : Do you like french cheese ?
+#&gt; 
+#&gt; ### Exploration des données brutes
+#&gt; ```{r brute_q2_cheese}
+#&gt; head(raw_data$q2_cheese, 10)
+#&gt; ```
+#&gt; 
+#&gt; ### Transformation
+#&gt; ```{r transfo_q2_cheese}
+#&gt; clean_data$q2_cheese &lt;- factor(
+#&gt;   x = raw_data$q2_cheese,
+#&gt;   levels = c(&#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;),
+#&gt;   labels = c(&#39;Strongly disagree&#39;, &#39;Disagree&#39;, &#39;Neither agree nor disagree&#39;, &#39;Agree&#39;, &#39;Strongly agree&#39;),
+#&gt;   ordered = TRUE
+#&gt; )
+#&gt; ```
+#&gt; 
+#&gt; Ajouter un _label_ (étiquette).
+#&gt; ```{r label_q2_cheese}
+#&gt; attr(clean_data$q2_cheese, &quot;label&quot;) &lt;- &quot;Like french cheese&quot;
+#&gt; ```
+#&gt; 
+#&gt; ### Vérifier
+#&gt; ```{r check_q2_cheese}
+#&gt; # Premières données
+#&gt; head(clean_data$q2_cheese, 10)
+#&gt; 
+#&gt; # Résumé
+#&gt; summary(clean_data$q2_cheese)
+#&gt; 
+#&gt; # Graphique
+#&gt; qplot(clean_data$q2_cheese, xlab = label(clean_data$q2_cheese))
+#&gt; ```
+#&gt; 
+#&gt; # Exploration globale
+#&gt; 
+#&gt; Recherche de données manquantes graphiquement
+#&gt; ```{r }
+#&gt; library(dfexplore)
+#&gt; dfplot(clean_data)
+#&gt; ```
+#&gt; 
+#&gt; # Sauvegarder
+#&gt; 
+#&gt; ```{r}
+#&gt; donnees &lt;- clean_data
+#&gt; save(donnees, file = &quot;donnees.RData&quot;)
+#&gt; ```
+#&gt; #- End of the script in Rmd -#
+</code></pre>
+
+<h3>Create your own template with <code>export_template</code></h3>
+
+<p>If you don&#39;t find any template that feet your need in the builtin ones, create one!
+Template are just <code>R</code> and <code>Rmd</code> files with some delimiters. More information about how to produce your template in the documentation</p>
+
+<pre><code class="r">?template
+</code></pre>
+
+<p>Basicaly, the idea is to export an builtin template and change it. To to this, use <code>export_template</code>. For example, if you want to modify the preceding template, export it with :</p>
+
+<pre><code class="r">export_template(builtin = &quot;template_fr.Rmd&quot;, to = &quot;mytemplate.Rmd&quot;)
+</code></pre>
+
+<p>When you are happy with your template, import it with <code>import_template</code>.</p>
+
+<pre><code class="r">my_template &lt;- import_template(path = &quot;mytemplate.Rmd&quot;)
+</code></pre>
+
+<p>and then use it to produce your script</p>
+
+<pre><code class="r">create_script(var_desc = database_def_object, template = my_template)
+</code></pre>
+
+<h2>What to do with this script skeleton?</h2>
+
+<p>The job of <em>vartors</em> ends with the script skeleton creation. We you choose to produce a script with this package and not directly the cleaned database to give the availabilty to the user to adapt perfecly the importation phase to his needs. Then what to do with this script? </p>
+
+<ol>
+<li>Run the script line by line to check if it work and adapt it when necessary and then save the well formated data.frame</li>
+<li>When you have a clean script, use tools like <code>knitr</code> to produce a report in HTML, PDF or other format.</li>
+</ol>
+
+</body>
+
+</html>

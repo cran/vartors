@@ -1,0 +1,153 @@
+vartors 0.2.4
+==============
+
+* Third version submited to CRAN, with corrections from review by CRAN member
+
+* Spellcheck of all the documentation
+
+* Test units now work on any plateform, thank's to tempfile() and tempdir()
+
+* Usage of keywords in the documentation
+
+vartors 0.2.2
+===============
+
+* Second version submited to CRAN, with corrections from review by CRAN member
+
+* DESCRIPTION include better title and better description
+
+* All data sample are in .RData, to avoid problems when loading with LazyData
+
+* Now use R CMD check --as-cran to test the package before submission
+
+* Use a Makefile to build and check
+
+* Better documentation pages
+
+* Add keywords in documentation
+
+
+vartors 0.2
+===============
+
+* First version submited to CRAN
+
+* Two vignettes : usage and workflow
+
+
+vartors 0.1.8
+===============
+
+* New version numbering convention based on major.minor.maintenance.build
+
+* export_template() allow to export built-in scripts to create your own script templates
+
+* Documentation to explain how to use templates in ?script_template
+
+* Change of object names to be more mainingfull.
+
+* Add function list_templates() and is_vartors_template()
+
+* import_template add an argument "builtin" to select a builtin template
+  by his name
+
+vartors 0.1.7.2
+===============
+
+* template_en.R : one parenthesis fixed
+
+* write method is renamed write_file to avoid confusion with base::write 
+  and will be used to write script_template, descvars, descvars_skeleton...
+
+vartors 0.1.7.1
+===============
+
+* dm_output class is renamed script_output
+
+* updated figure of complete workflow, including create_descvar()
+
+vartors 0.1.7
+===============
+
+* create_descvar() help to create descvars skeleton from a database (or nothing)
+
+
+vartors 0.1.6
+===============
+
+* Name of the package changed from `easydm` to `vartors` to reflect better
+  the aim of the package (VARiable definition TO R Script skeleton)
+
+* create_dm() : footer and header optionnals
+
+* create_dm() : parser footer and header
+
+* better readme
+
+* Rdm template in French
+
+* create_dm() is renamed as create_script()
+
+* better documentation for vartors-package
+
+easydm 0.1.5
+===============
+
+* `import_vardef()` could use data.frame with various column class thank to the
+  use of a function `as.character.data.frame()`
+
+* `import_vardef()` clean-up the data.frame given, erasing leadings spaces, 
+  converting "NA" in real NA and blanck cells in NA.
+
+* When there is an error message with `Descvar()` or `Descvars()`, the name of 
+  the variable is indicated.
+
+* Added a sample data.frame of table of variables descriptions 
+
+* NEWS.md is transformed to NEWS following convention exposed in 
+  Hadley Wickham book one's (http://adv-r.had.co.nz/Documenting-packages.html)
+
+* Fix #1: var_name and others slots of `descvar` accept non perfect names and 
+  send only a warning in this case
+
+* Fix #2: object names are more constant during the workflow
+
+* Fix #3: R CMD check pass after modifications in the documentation and some
+  code. "[]" getters methods removed.
+
+easydm 0.1.4
+===============
+
+* `import_vardef` is able now to handle non standard headers with the 
+  `col_replacement` argument
+
+* `import_template` have one argument to set the path of a template (`path`) 
+  and an other one to define a name for a builtin template (`builtin`)
+
+* The default template `R_en.R` is improved with a header and a footer.
+
+easydm 0.1.2
+===============
+
+* Methods `create_dm`are now in a same file, including generic, to avoid an 
+  error when package is installed.
+
+* `Desc_database` class implemented. Permit to have multiple varibles defines 
+  in the same time.
+
+* method `create_dm` for `desc_database` class allow to create in one time all 
+  the datamagement script for each variable
+
+easydm 0.1.1
+===============
+
+* Units test using `testthat` now work properly
+
+* `Descvar` class implemented with some methods
+
+easydm 0.1.0
+===============
+
+* add `import_template()`
+
+* add `import_vardesc()`

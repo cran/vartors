@@ -1,0 +1,11 @@
+column,originalname,varlabel,description,comment,unit,type,rname,flevel1,flabel1,flevel2,flabel2,flevel3,flabel3,flevel4,flabel4,flevel5,flabel5
+A,subject,Unique id,NA,Don't perform any analysis. Must be unique,NA,character,id,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+B,initial,initial,First letters of the name and surname,Not useful for analysis,NA,not_used,,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+C,birth,Birthdate,NA,Use it to calculate age (reference date = 2014-07-31),%Y-%m-%d,date,birthdate,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+D,sex,Gender,NA,NA,NA,factor,sex,female,Women,male,Man,NA,NA,NA,NA,NA,NA
+E,height,Height,NA,NA,m,numeric,height,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+F,weight,Weight,NA,NA,kg,numeric,weight,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+G,siblings,Number of siblings,Original question : How many sisters and brothers do you have ?,count variable -> try a Poisson distribution,NA,integer,nb_siblings,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+H,study_level,Maximal study level,Original question : What's your higher education level ? ,NA,NA,ordered,study_level,primary,primary,secondary,secondary,superior,superior,NA,NA,NA,NA
+I,Q1,Like chocolate,Original question : Do you like chocolate ?,Used a Likert scale.,NA,ordered,q1_chocolate,0,Strongly disagree,1,Disagree,2,Neither agree nor disagree,3,Agree,4,Strongly agree
+J,Q2,Like french cheese,Original question : Do you like french cheese ?,Used a Likert scale.,NA,ordered,q2_cheese,0,Strongly disagree,1,Disagree,2,Neither agree nor disagree,3,Agree,4,Strongly agree

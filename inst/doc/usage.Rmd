@@ -1,0 +1,244 @@
+---
+title: "Tutorial of vartors"
+output:
+  pdf_document:
+    toc: yes
+  html_document:
+    toc: yes
+---
+
+<!--
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{Tutorial of vartors}
+-->
+
+```{r, echo = FALSE, message = FALSE}
+library(knitr)
+knitr::opts_chunk$set(
+  comment = "#>",
+  error = FALSE,
+  tidy = FALSE
+)
+
+library(vartors)
+```
+
+# A tutorial of vartors
+
+## Raw material and main problem : a simple database
+
+To be useful, _vartors_ need a simple database. Simple databases are defined as a single table database, with one variable by column, one observation by line and the name of each variable in the first line (header).
+
+As a example, we will use the `bad_database.csv` given in the _vartors_ package.
+
+```{r}
+# Load the database
+raw_data <- read.csv(file = paste0(path.package("vartors"),"/examples/bad_database.csv"))
+```
+
+This database have 10 variables of differents types and 100 observations. It seem's to be OK but if we check the class of each variable, there is some troubles.
+
+```{r}
+str(raw_data)
+```
+
+We observe these issues :
+
+- `birth` was reconized as a factor but in reality, it's a data. `read.csv` don't detect dates.
+- `height` and `weight` were reconized as factor too but are numerics. It's because there is multiple definition for missing data (_NA_, _?_, _empty cell_ and some comments)
+- We don't know what are the labels for `study_levels`
+- We have no idea about what are the variables `Q1` and `Q2`
+- `initial` was reconized as a _factor_ but in reality, must be a _character_. It's because `read.csv` have the argument `stringsAsFactors = TRUE` by default.
+
+If you want to import this dataframe properly in _R_ you will have to transform manually each variable, for example by writing a script like this
+
+```{r, eval=FALSE}
+clean_data <- raw_data
+clean_data$initial <- as.character(raw_data$initial)
+clean_data$birth <- as.Date(raw_data$birth, format = "%Y-%m-%d")
+
+```
+
+And this for each variable. Here it's easy because there is only 10 variables but it become quickly boring, time consuming and error prone for 50 variables. Furthermost, we have no information about the _labels_ for _study_levels_, _Q1_ and _Q2_. Then we need some information about. 
+
+## Create a description of the variable
+
+### Create a skeleton with `descvars_skeleton`
+
+The idea is to be explict about each variable. To achieve this, we could create a variable description table. _vartors_ have the function `descvars_skeleton` to help you to create a skeleton of this a variables description table.
+
+```{r, echo=FALSE}
+# Because limits in detection of factors not implemented yet
+raw_data$birth <- as.character(raw_data$birth)
+raw_data$initial <- as.character(raw_data$initial)
+raw_data$height <- as.character(raw_data$height)
+raw_data$weight <- as.character(raw_data$weight)
+raw_data$siblings <- as.character(raw_data$siblings)
+```
+
+```{r, results='asis'}
+library(vartors)
+desc_skeleton <- descvars_skeleton(raw_data)
+kable(desc_skeleton[,1:12])
+```
+
+Now, you have to ask the person who give you the database to explain each variable and fullfill this description of variable table. Just edit this, by using for example `edit` 
+
+```{r, eval=FALSE}
+desc_complete <- edit(desc_skeleton)
+```
+
+or in a more handy way, by saving the data.frame in `.csv` use a spreadsheet 
+software like [LibreOffice](http://libreoffice.org/). This way, you should send it to the person who send you this database and ask him to fullfill it or do it with him.
+
+```{r, eval=FALSE}
+write.csv(desc_skeleton, file = "variables_description.csv")
+```
+
+Fulfill this file is the most time consumming part in the _vartors_ process but normaly if the database was well formated, it's easy to do it.
+
+### Import the variable description with `import_vardesc`
+
+Next step is to import this table with variables description to a format that _vartors_ should handle.
+
+Import the table in _R_ as a dataframe
+
+```{r}
+# Path to csv in the vartors package. 
+# It's a specific case. In real usage, use the path to your file instead
+path_to_vardesc <- paste0(path.package("vartors"),
+                          "/examples/variables_description_bad_database.csv")
+# Import the csv
+complete_vardesc <- read.csv(file = path_to_vardesc)
+```
+
+The result is show below in two parts 
+
+Complete variable description, first 8 columns :
+
+```{r, echo=FALSE, results='asis'}
+kable(complete_vardesc[, 1:8])
+```
+
+Complete variable description, first 2 columns and last columns :
+
+```{r, echo=FALSE, results='asis'}
+kable(complete_vardesc[, c(1:2,9:17)])
+```
+
+This way each variable is explicit. Note that you should used the type *not_used* in order to discard variable.
+
+Then you have to transform this `data.frame` to a `DatabaseDef` object, which could be understood by vartors. To to this, use `import_vardef`
+
+```{r, warning=FALSE}
+suppressWarnings(
+database_def_object <- import_vardef(complete_vardesc)
+)
+```
+
+If you don't suppress the warnings, you will show some message that's say your _rnames_ are not perfect but will work.
+
+You could show this object
+
+```{r}
+database_def_object
+```
+
+You see that `import_vardef` parsed the table of variable definition. For example if you don't give _rname_ in your table of variable definition, it will find one by reading the _varlabel_ column or _originalname_ if there is no *varlabel*.
+
+## Create the script with `create_script`
+
+It's time to create a script with this. It's really easy. Just use the `create_script` method
+
+```{r}
+simple_script <- create_script(var_desc = database_def_object)
+```
+
+That's that simple! You have a script you can explore
+
+```{r}
+simple_script
+```
+
+
+and you can write it in the this script in a file
+
+```{r, eval=FALSE}
+write_file(object = simple_script, filepath = "my_import_script1.R")
+```
+
+## The fast way
+
+One time you have your table with variables definition loaded in a data.frame, it's possible to do all the process in one line.
+
+Remember, before we just imported it to a data.frame called _complete\_vardesc_.
+
+```{r, eval=FALSE}
+write_file(create_script(var_desc = complete_vardesc), filepath = "my_import_script1.R")
+```
+
+## What about templates?
+
+### Choose a builtin with `import_template`
+One of the strength of vartors, is his _template_ system. Just before we created a script in _R_. But maybe you want it in _.Rmd_ and then produce a report using `knitr`?
+And let's say you are a French user, then we want one in french.
+
+To see what are the builtin template available, read the documentation of `import_template` function
+
+```{r, eval=FALSE}
+?import_template
+```
+
+In the _Details_ section, one can show there is a template that should match to our needs *template_fr.Rmd*. To import it, use `import_template` function and put the name of the builtin template in the _builtin_ argument
+
+```{r}
+rmd_template <- import_template(builtin = "template_fr.Rmd")
+```
+
+Then recreate a script with this template
+
+```{r}
+rmd_script <- create_script(var_desc = database_def_object, template = rmd_template)
+```
+
+And you have your script in Rmd !
+
+```{r}
+rmd_script
+```
+
+### Create your own template with `export_template`
+
+If you don't find any template that feet your need in the builtin ones, create one!
+Template are just `R` and `Rmd` files with some delimiters. More information about how to produce your template in the documentation
+
+```{r, eval=FALSE}
+?template
+```
+
+Basicaly, the idea is to export an builtin template and change it. To to this, use `export_template`. For example, if you want to modify the preceding template, export it with :
+
+```{r, eval=FALSE}
+export_template(builtin = "template_fr.Rmd", to = "mytemplate.Rmd")
+```
+
+When you are happy with your template, import it with `import_template`.
+
+```{r, eval=FALSE}
+my_template <- import_template(path = "mytemplate.Rmd")
+```
+
+and then use it to produce your script
+
+```{r, eval=FALSE}
+create_script(var_desc = database_def_object, template = my_template)
+```
+
+## What to do with this script skeleton?
+
+The job of _vartors_ ends with the script skeleton creation. We you choose to produce a script with this package and not directly the cleaned database to give the availabilty to the user to adapt perfecly the importation phase to his needs. Then what to do with this script? 
+
+1. Run the script line by line to check if it work and adapt it when necessary and then save the well formated data.frame
+2. When you have a clean script, use tools like `knitr` to produce a report in HTML, PDF or other format.
+
+ 
